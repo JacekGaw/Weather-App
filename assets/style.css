@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:200,400,700&display=swap&subset=latin-ext");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #eee;
+  font-family: 'Raleway', sans-serif;
+}
+/*# sourceMappingURL=style.css.map */
