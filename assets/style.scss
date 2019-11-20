@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:200,400,700&display=swap&subset=latin-ext");
+$blue-color: rgb(0,108,164);
 
 * {
     margin: 0;
@@ -14,11 +15,16 @@ body {
     font-size: 24px;
 
     .nav {
-        background-color: #aaa;
+        width: 100%;
+        background-color: #ababab;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 2% 5%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 5;
 
         .nav__link {
             text-decoration: none;
@@ -28,6 +34,13 @@ body {
         .nav__header {
             display: flex;
             align-items: center;
+
+            .logo__icon {
+                margin-right: 5px;
+            }
+            .logo__header--blue {
+                color: $blue-color;
+            }
         }
 
         .nav__input {
@@ -35,6 +48,79 @@ body {
             font-size: 1rem;
             border: 0 solid rgba(10,10,10,0);
             background-color: #eee;
+            box-shadow: 2px 2px 6px #777;
+            transition: 0.3s box-shadow;
+
+            &:hover {
+                box-shadow: 2px 2px 6px $blue-color;
+            }
+            &:focus {
+                box-shadow: 2px 2px 6px $blue-color;
+            }
+        }
+        .nav__search {
+            border: 0px solid #111;
+            background-color: #eee;
+            padding: 10px;
+            font-size: 1rem;
+            margin: 0;
+            box-shadow: 2px 2px 6px #777;
+            transition: 0.3s box-shadow;
+
+            &:hover {
+                box-shadow: 2px 2px 6px $blue-color;
+            }
+        }
+    }
+
+    .section {
+        background-repeat: no-repeat;
+        background-position: right;
+        background-size: cover;
+        background-image: url('/assets/clouds.jpg');
+        position: relative;
+
+        .section__row {
+            padding: 5%;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-image: linear-gradient(to right, rgba(220,220,220,1) 10%, rgba(220,220,220,0.4));
+
+            .row__header {
+                width: 70%;
+
+                h1 {
+                    font-size: 3rem;
+                    margin-bottom: 30px;
+                    padding: 10px;
+                    border-left: 3px solid $blue-color;
+                    border-bottom: 3px solid $blue-color;
+                }
+                p {
+                    font-size: 1.2rem;
+                    line-height: 120%;
+                }
+            }
+        }
+
+        .footer {
+            text-align: right;
+            align-self: flex-end;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+
+            .footer__link {
+                color: #111;
+                font-size: 1rem;
+
+                &:hover {
+                    color: $blue-color;
+                }
+            }
         }
     }
 }
