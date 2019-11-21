@@ -18,5 +18,12 @@ let searchWeather = (searchTerm) => {
 
 let getResult = ((resultFromSerwer) => {
     console.log(resultFromSerwer);
+    resultFromSerwer.cod == "404" ? document.querySelector('#city').innerHTML = resultFromSerwer.message : getData(resultFromSerwer);
 });
 
+let getData = ((data) => {
+    console.log(data);
+    document.querySelector('#city').innerHTML = `${data.name}<sup class="main__city--country">${data.sys.country}</sup>`;
+    document.querySelector('#temperature').innerHTML = data.main.temp;
+    document.querySelector('#icon').innerHTML = `<img class="icon" scr="openweathermap.org/img/wn/${data.weather[0].icon}@2x.png/">`;
+});
