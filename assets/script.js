@@ -22,8 +22,13 @@ let getResult = ((resultFromSerwer) => {
 });
 
 let getData = ((data) => {
-    console.log(data);
     document.querySelector('#city').innerHTML = `${data.name}<sup class="main__city--country">${data.sys.country}</sup>`;
-    document.querySelector('#temperature').innerHTML = data.main.temp;
     document.querySelector('#icon').innerHTML = `<img class="icon" scr="openweathermap.org/img/wn/${data.weather[0].icon}@2x.png/">`;
+    document.querySelector('#temperature').innerHTML = `${data.main.temp}&#x2103`;
+    document.querySelector('#clouds').innerHTML = `${data.clouds.all}%`;
+    document.querySelector('#pressure').innerHTML = `${data.main.pressure}hPa`;
+    document.querySelector('#humidity').innerHTML = `${data.main.humidity}%`;
+    document.querySelector('#wind').innerHTML = `${data.wind.speed}m/s`;
+    document.querySelector('#tempMin').innerHTML = `${data.main.temp_min}&#x2103`;
+    document.querySelector('#tempMax').innerHTML = `${data.main.temp_max}&#x2103`;
 });
