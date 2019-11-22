@@ -9,7 +9,7 @@ searchButton.addEventListener('click', () => {
 });
 
 let searchWeather = (searchTerm) => {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?${searchMethod}=${searchTerm}&APPID=${appId}&units=${units}`).then(result => {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?${searchMethod}=${searchTerm}&APPID=${appId}&units=${units}`).then(result => {
         return result.json();
     }).then(result => {
         getResult(result);
@@ -17,18 +17,18 @@ let searchWeather = (searchTerm) => {
 }
 
 let getResult = ((resultFromSerwer) => {
-    console.log(resultFromSerwer);
-    resultFromSerwer.cod == "404" ? document.querySelector('#city').innerHTML = resultFromSerwer.message : getData(resultFromSerwer);
+    resultFromSerwer.cod == "404" ? alert(resultFromSerwer.message) : getData(resultFromSerwer);
 });
 
 let getData = ((data) => {
-    document.querySelector('#city').innerHTML = `${data.name}<sup class="main__city--country">${data.sys.country}</sup>`;
-    document.querySelector('#icon').innerHTML = `<img class="icon" scr="openweathermap.org/img/wn/${data.weather[0].icon}@2x.png/">`;
-    document.querySelector('#temperature').innerHTML = `${data.main.temp}&#x2103`;
-    document.querySelector('#clouds').innerHTML = `${data.clouds.all}%`;
-    document.querySelector('#pressure').innerHTML = `${data.main.pressure}hPa`;
-    document.querySelector('#humidity').innerHTML = `${data.main.humidity}%`;
-    document.querySelector('#wind').innerHTML = `${data.wind.speed}m/s`;
-    document.querySelector('#tempMin').innerHTML = `${data.main.temp_min}&#x2103`;
-    document.querySelector('#tempMax').innerHTML = `${data.main.temp_max}&#x2103`;
+    console.log(data);
+    document.querySelector('#city').innerHTML = `${data.name}<sup class="main__item--sup">${data.sys.country}</sup>`;
+    document.querySelector('#icon').innerHTML = `<img class="icon" scr="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png/">`;
+    document.querySelector('#temperature').innerHTML = `${data.main.temp}<sup class="main__item--sup">&#x2103</sup>`;
+    document.querySelector('#clouds').innerHTML = `${data.clouds.all}<sup class="item__output--sup">%</sup>`;
+    document.querySelector('#pressure').innerHTML = `${data.main.pressure}<sup class="item__output--sup">hPa</sup>`;
+    document.querySelector('#humidity').innerHTML = `${data.main.humidity}<sup class="item__output--sup">%</sup>`;
+    document.querySelector('#wind').innerHTML = `${data.wind.speed}<sup class="item__output--sup">m/s</sup>`;
+    document.querySelector('#tempMin').innerHTML = `${data.main.temp_min}<sup class="item__output--sup">&#x2103</sup>`;
+    document.querySelector('#tempMax').innerHTML = `${data.main.temp_max}<sup class="item__output--sup">&#x2103</sup>`;
 });
