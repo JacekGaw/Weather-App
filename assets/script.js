@@ -9,7 +9,7 @@ searchButton.addEventListener('click', () => {
 });
 
 let searchWeather = (searchTerm) => {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?${searchMethod}=${searchTerm}&APPID=${appId}&units=${units}`).then(result => {
+    fetch(`http://api.openweathermap.org/data/2.5/weather?${searchMethod}=${searchTerm}&APPID=${appId}&units=${units}`).then(result => {
         return result.json();
     }).then(result => {
         getResult(result);
@@ -23,7 +23,7 @@ let getResult = ((resultFromSerwer) => {
 let getData = ((data) => {
     console.log(data);
     document.querySelector('#city').innerHTML = `${data.name}<sup class="main__item--sup">${data.sys.country}</sup>`;
-    document.querySelector('#icon').innerHTML = `<img class="icon" scr="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png/">`;
+    document.querySelector('#icon').innerHTML = `<img class="icon" scr="openweathermap.org/img/wn/${data.weather[0].icon}@2x.png/">`;
     document.querySelector('#temperature').innerHTML = `${data.main.temp}<sup class="main__item--sup">&#x2103</sup>`;
     document.querySelector('#clouds').innerHTML = `${data.clouds.all}<sup class="item__output--sup">%</sup>`;
     document.querySelector('#pressure').innerHTML = `${data.main.pressure}<sup class="item__output--sup">hPa</sup>`;
