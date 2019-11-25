@@ -15,7 +15,7 @@ searchButton.addEventListener('click', () => {
 });
 
 let searchWeather = (searchTerm) => {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?${searchMethod}=${searchTerm}&APPID=${appId}&units=${units}`).then(result => {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?${searchMethod}=${searchTerm}&APPID=${appId}&units=${units}`).then(result => {
         return result.json();
     }).then(result => {
         getResult(result);
@@ -31,7 +31,7 @@ let getData = ((data) => {
     document.querySelector('#section').style.display = "none";
     console.log(data);
     document.querySelector('#city').innerHTML = `${data.name}<sup class="main__item--sup">${data.sys.country}</sup>`;
-    document.querySelector('#icon').innerHTML = `<img class="icon" src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png">`;
+    document.querySelector('#icon').innerHTML = `<img class="icon" src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png">`;
     document.querySelector('#weather').innerHTML = data.weather[0].main;
     document.querySelector('#temperature').innerHTML = `${data.main.temp}<sup class="main__item--sup">&#x2103</sup>`;
     document.querySelector('#clouds').innerHTML = `${data.clouds.all}<sup class="item__output--sup">%</sup>`;
