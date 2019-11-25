@@ -127,7 +127,7 @@ body .section {
   background-repeat: no-repeat;
   background-position: right;
   background-size: cover;
-  background-image: url("/Weather-App/assets/clouds.jpg");
+  background-image: url("/assets/clouds.jpg");
   position: relative;
 }
 
