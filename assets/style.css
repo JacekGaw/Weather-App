@@ -255,6 +255,15 @@ body .main .main__container .main__item .main__item--sup {
   }
 }
 
+body .main .main__container .main__icon {
+  background-color: #fff;
+}
+
+body .main .main__container .main__icon .icon {
+  width: 100px;
+  height: 100px;
+}
+
 body .main .aside__container {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 50%;
