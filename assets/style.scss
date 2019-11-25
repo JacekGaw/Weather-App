@@ -26,21 +26,27 @@ body {
         top: 0;
         left: 0;
         z-index: 5;
+        @media screen and (max-width:700px){
+            height: 70px;
+        }
 
         .nav__link {
             text-decoration: none;
             color: #333;
-        }
-
-        .nav__header {
-            display: flex;
-            align-items: center;
-
-            .logo__icon {
-                margin-right: 5px;
+            @media screen and (max-width: 700px){
+                font-size: 1rem;
             }
-            .logo__header--blue {
-                color: $blue-color;
+
+            .nav__header {
+                display: flex;
+                align-items: center;
+
+                .logo__icon {
+                    margin-right: 5px;
+                }
+                .logo__header--blue {
+                    color: $blue-color;
+                }
             }
         }
 
@@ -51,6 +57,10 @@ body {
             background-color: #eee;
             box-shadow: 2px 2px 6px #777;
             transition: 0.3s box-shadow;
+            @media screen and (max-width:700px){
+                width: 100px;
+                padding: 5px;
+            }
 
             &:hover {
                 box-shadow: 2px 2px 6px $blue-color;
@@ -67,6 +77,9 @@ body {
             margin: 0;
             box-shadow: 2px 2px 6px #777;
             transition: 0.3s box-shadow;
+            @media screen and (max-width:700px){
+                padding: 5px;
+            }
 
             &:hover {
                 box-shadow: 2px 2px 6px $blue-color;
@@ -128,11 +141,15 @@ body {
     .main {
         min-height: 100vh;
         width: 100%;
-        padding: 0 5%;
+        padding: 0 5% 5% 5%;
         padding-top: 120px;
         display: flex;
         justify-content: center;
         align-items: center;
+
+        @media screen and (max-width: 700px){
+            flex-direction: column;
+        }
 
         .main__container {
             flex: 0 1 50%;
@@ -140,20 +157,34 @@ body {
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            @media screen and (max-width:700px){
+                flex: 0 1 100%;
+            }
 
             .main__item {
                 font-size: 3rem;
+                text-align: center;
+                @media screen and (max-width:700px){
+                    font-size: 2rem;
+                }
 
                 .main__item--sup {
                     font-size: 1.5rem;
                     font-weight: 200;
+                    @media screen and (max-width:700px){
+                        font-size: 1rem;
+                    }
                 }
             }
         }
 
         .aside__container {
             flex: 0 1 50%;
-            border-left: 2px solid $blue-color;;
+            border-left: 2px solid $blue-color;
+            @media screen and (max-width: 700px){
+                border-left: 0px solid #111;
+                flex: 0 1 100%;
+            }
 
             .aside__row {
                 display: flex;
@@ -178,14 +209,25 @@ body {
                     .item__header {
                         font-size: 1.5rem;
                         font-weight: 400;
+                        text-align: center;
+                        @media screen and (max-width:700px){
+                            font-size: 1.2rem;
+                        }
                     }
 
                     .item__output {
                         font-size: 2.5rem;
+                        text-align: center;
+                        @media screen and (max-width:700px){
+                            font-size: 1.5rem;
+                        }
 
                         .item__output--sup {
                             font-size: 1.5rem;
                             font-weight: 200;
+                            @media screen and (max-width:700px){
+                                font-size: 1rem;
+                            }
                         }
                     }
                 }
