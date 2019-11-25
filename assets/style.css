@@ -192,12 +192,17 @@ body .main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  display: none;
 }
 
 @media screen and (max-width: 700px) {
@@ -226,14 +231,6 @@ body .main .main__container {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-@media screen and (max-width: 700px) {
-  body .main .main__container {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 1 100%;
-            flex: 0 1 100%;
-  }
 }
 
 body .main .main__container .main__item {
@@ -268,9 +265,6 @@ body .main .aside__container {
 @media screen and (max-width: 700px) {
   body .main .aside__container {
     border-left: 0px solid #111;
-    -webkit-box-flex: 0;
-        -ms-flex: 0 1 100%;
-            flex: 0 1 100%;
   }
 }
 

@@ -2,6 +2,12 @@ const appId = 'f23369e3f5807afe53622190f6a164e7';
 const units = 'metric';
 let searchMethod = 'q';
 const searchButton = document.querySelector('#searchButton');
+const navLogoLink = document.querySelector('#navLink');
+
+navLogoLink.addEventListener('click', () => {
+    document.querySelector('#main').style.display = "none";
+    document.querySelector('#section').style.display = "block";
+});
 
 searchButton.addEventListener('click', () => {
     let inputText = document.querySelector('#input').value;
@@ -21,6 +27,8 @@ let getResult = ((resultFromSerwer) => {
 });
 
 let getData = ((data) => {
+    document.querySelector('#main').style.display = "flex";
+    document.querySelector('#section').style.display = "none";
     console.log(data);
     document.querySelector('#city').innerHTML = `${data.name}<sup class="main__item--sup">${data.sys.country}</sup>`;
     document.querySelector('#icon').innerHTML = `<img class="icon" scr="openweathermap.org/img/wn/${data.weather[0].icon}@2x.png/">`;

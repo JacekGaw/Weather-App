@@ -144,8 +144,10 @@ body {
         padding: 0 5% 5% 5%;
         padding-top: 120px;
         display: flex;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
+        display: none;
 
         @media screen and (max-width: 700px){
             flex-direction: column;
@@ -157,9 +159,6 @@ body {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            @media screen and (max-width:700px){
-                flex: 0 1 100%;
-            }
 
             .main__item {
                 font-size: 3rem;
@@ -183,7 +182,6 @@ body {
             border-left: 2px solid $blue-color;
             @media screen and (max-width: 700px){
                 border-left: 0px solid #111;
-                flex: 0 1 100%;
             }
 
             .aside__row {
