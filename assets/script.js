@@ -18,18 +18,25 @@ let searchWeather = (searchTerm) => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?${searchMethod}=${searchTerm}&APPID=${appId}&units=${units}`).then(result => {
         return result.json();
     }).then(result => {
-        getResult(result);
+        getResult(result, "current");
+    });
+
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?${searchMethod}=${searchTerm}&APPID=${appId}&units=${units}`).then(result => {
+        return result.json();
+    }).then(result => {
+        getResult(result, "daily");
     });
 }
-
-let getResult = ((resultFromSerwer) => {
-    resultFromSerwer.cod == "404" ? alert(resultFromSerwer.message) : getData(resultFromSerwer);
+let getResult = ((resultFromSerwer, arg) => {
+    arg == "current" ? (resultFromSerwer.cod == "404" ? alert(resultFromSerwer.message) : getCurrentData(resultFromSerwer)) : console.log('');
+    arg == "daily" ? (resultFromSerwer.cod == "404" ? alert(resultFromSerwer.message) : getDailyData(resultFromSerwer)) : console.log('');
 });
 
-let getData = ((data) => {
+let getCurrentData = ((data) => {
     document.querySelector('#main').style.display = "flex";
     document.querySelector('#section').style.display = "none";
-    console.log(data);
+    //console.log(data);
+    document.querySelector('#date').innerHTML = setDateFromUnix(data.dt, 'day');
     document.querySelector('#city').innerHTML = `${data.name}<sup class="main__item--sup">${data.sys.country}</sup>`;
     document.querySelector('#icon').innerHTML = `<img class="icon" src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png">`;
     document.querySelector('#weather').innerHTML = data.weather[0].main;
@@ -40,4 +47,36 @@ let getData = ((data) => {
     document.querySelector('#wind').innerHTML = `${data.wind.speed}<sup class="item__output--sup">m/s</sup>`;
     document.querySelector('#tempMin').innerHTML = `${data.main.temp_min}<sup class="item__output--sup">&#x2103</sup>`;
     document.querySelector('#tempMax').innerHTML = `${data.main.temp_max}<sup class="item__output--sup">&#x2103</sup>`;
+});
+
+let getDailyData = ((data) => {
+    console.log(data);
+    let nevElement;
+    const dailyWeatherSection = document.querySelector('#dailyWeather');
+    for(let i=0; i<data.list.length; i++){
+        console.log(i);
+        nevElement = document.createElement("div");
+        nevElement.className = "daily__item";
+        nevElement.innerHTML = `<h3>${setDateFromUnix(data.list[i].dt, 'hour')}</h3>
+        ${data.list[i].main.temp}C`;
+        dailyWeatherSection.appendChild(nevElement);
+    }
+});
+
+let setDateFromUnix = ((unixDate, dataVariant) => {
+    let date = new Date(unixDate*1000);
+    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var month = months[date.getMonth()];
+    let year = date.getFullYear();
+    let day = date.getDate();
+    let hours = date.getHours();
+    let minutes = "0" + date.getMinutes();
+    if(dataVariant == 'day'){
+        let formattedDate = `${day} ${month} ${year}`;
+        return formattedDate;
+    }
+    else {
+        let formattedDate = `${day} ${month} ${year} <br> ${hours}:${minutes.substr(-2)}`;
+        return formattedDate;
+    }
 });
