@@ -40,13 +40,13 @@ let getCurrentData = ((data) => {
     document.querySelector('#city').innerHTML = `${data.name}<sup class="main__item--sup">${data.sys.country}</sup>`;
     document.querySelector('#icon').innerHTML = `<img class="icon" src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png">`;
     document.querySelector('#weather').innerHTML = data.weather[0].main;
-    document.querySelector('#temperature').innerHTML = `${data.main.temp}<sup class="main__item--sup">&#x2103</sup>`;
+    document.querySelector('#temperature').innerHTML = `${Round(data.main.temp,1)}<sup class="main__item--sup">&#x2103</sup>`;
     document.querySelector('#clouds').innerHTML = `${data.clouds.all}<sup class="item__output--sup">%</sup>`;
     document.querySelector('#pressure').innerHTML = `${data.main.pressure}<sup class="item__output--sup">hPa</sup>`;
     document.querySelector('#humidity').innerHTML = `${data.main.humidity}<sup class="item__output--sup">%</sup>`;
     document.querySelector('#wind').innerHTML = `${data.wind.speed}<sup class="item__output--sup">m/s</sup>`;
-    document.querySelector('#tempMin').innerHTML = `${data.main.temp_min}<sup class="item__output--sup">&#x2103</sup>`;
-    document.querySelector('#tempMax').innerHTML = `${data.main.temp_max}<sup class="item__output--sup">&#x2103</sup>`;
+    document.querySelector('#tempMin').innerHTML = `${Round(data.main.temp_min,1)}<sup class="item__output--sup">&#x2103</sup>`;
+    document.querySelector('#tempMax').innerHTML = `${Round(data.main.temp_max,1)}<sup class="item__output--sup">&#x2103</sup>`;
 });
 
 let getDailyData = ((data) => {
@@ -54,13 +54,21 @@ let getDailyData = ((data) => {
     let nevElement;
     const dailyWeatherSection = document.querySelector('#dailyWeather');
     for(let i=0; i<data.list.length; i++){
-        console.log(i);
         nevElement = document.createElement("div");
-        nevElement.className = "daily__item";
-        nevElement.innerHTML = `<h3>${setDateFromUnix(data.list[i].dt, 'hour')}</h3>
-        ${data.list[i].main.temp}C`;
+        nevElement.className = `daily__item hour${setDateFromUnix(data.list[i].dt, 'hourOnly')}`;
+        nevElement.innerHTML = `<p class="daily__date">${setDateFromUnix(data.list[i].dt, 'hours')}</p>
+                                <div class="weather__row">
+                                    <img class="weather__icon" src="https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png">
+                                    <h6>${data.list[i].weather[0].main}</h6>
+                                </div>
+                                <div class="daily__temp"><p>${Round(data.list[i].main.temp,1)}C</p></div>
+                                    `;
         dailyWeatherSection.appendChild(nevElement);
     }
+});
+let Round = ((n, k) => {
+    let factor = Math.pow(10, k);
+    return Math.round(n*factor)/factor;
 });
 
 let setDateFromUnix = ((unixDate, dataVariant) => {
@@ -75,8 +83,10 @@ let setDateFromUnix = ((unixDate, dataVariant) => {
         let formattedDate = `${day} ${month} ${year}`;
         return formattedDate;
     }
-    else {
-        let formattedDate = `${day} ${month} ${year} <br> ${hours}:${minutes.substr(-2)}`;
+    else if(dataVariant == 'hours') {
+        let formattedDate = `${day} ${month} ${year} <br> <strong>${hours}:${minutes.substr(-2)}</strong>`;
         return formattedDate;
     }
+    else if(dataVariant == "hourOnly")
+        return toString(hours);
 });

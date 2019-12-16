@@ -345,4 +345,78 @@ body .main .aside__container .aside__row .row__item .item__output .item__output-
     font-size: 1rem;
   }
 }
+
+body .weather__section {
+  padding: 0 5%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+body .weather__section .daily__item {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 20%;
+          flex: 0 1 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fff;
+  padding: 20px 40px;
+  margin: 20px 20px;
+  -webkit-box-shadow: 2px 2px 5px rgba(0, 108, 164, 0.5);
+          box-shadow: 2px 2px 5px rgba(0, 108, 164, 0.5);
+}
+
+@media screen and (max-width: 610px) {
+  body .weather__section .daily__item {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 100%;
+            flex: 0 1 100%;
+  }
+}
+
+body .weather__section .daily__item .daily__date {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+body .weather__section .daily__item .weather__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
+}
+
+body .weather__section .daily__item .daily__temp {
+  width: 50px;
+}
 /*# sourceMappingURL=style.css.map */

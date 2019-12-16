@@ -239,4 +239,42 @@ body {
             }
         }
     }
+    .weather__section {
+        padding: 0 5%;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        
+        .daily__item {
+            flex: 0 1 20%;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px 40px;
+            margin: 20px 20px;
+            box-shadow: 2px 2px 5px rgba(0,108,164,0.5);
+            @media screen and (max-width:610px){
+                flex-direction: row;
+                flex: 0 1 100%;
+            }
+
+            .daily__date {
+                font-size: 1.2rem;
+                text-align: center;
+            }
+            .weather__row {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 0 20px;
+            }
+            .daily__temp {
+                width: 50px;
+            }
+        }
+    }
 }
